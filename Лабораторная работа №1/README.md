@@ -66,7 +66,7 @@
 
 Взаимодействие между клиентским приложением и сервером происходит посредством запросов. 
 
-<img src="../Tech/images/lab1/Database_and_client.png">
+<img src="../../Tech/images/lab1/Database_and_client.png">
 
 Работу с PostgreSQL возможно осуществить из терминала или с помощью графического приложения. В данном курсе будет рассматриваться инструмент *pgAdmin*. 
 
@@ -97,7 +97,7 @@ psql
 
 После ввода данной команды, произведено соединение с сервером PostgreSQL. По умолчанию, произойдет подключение к базе данных, название которой совпадает с именем роли – postgres. Таким образом, в системе определено **три разные** сущности с одинаковым именем postgres – имена учетной записи *Linux*, роли в *PostgreSQL* и базы данных. 
 
-<img src="../Tech/images/lab1/подключение-к-серверу.png">
+<img src="../../Tech/images/lab1/подключение-к-серверу.png">
 
 Для работы с командной строкой PostgreSQL необходимо использовать специализированные команды. Некоторые из них приведены ниже. 
 
@@ -126,31 +126,31 @@ psql
 
 После запуска программы *pgAdmin* вам будет предложено ввести пароль, указанный при установке программы. Если программа была установлена администратором – спросите пароль у преподавателя. 
 
-<img src="../Tech/images/lab1/password-to-pgadmin.png">
+<img src="../../Tech/images/lab1/password-to-pgadmin.png">
 
 Основное окно программы выглядит следующим образом:   
 
-<img src="../Tech/images/lab1/main-window.png">
+<img src="../../Tech/images/lab1/main-window.png">
 
 Для подключения к серверу дважды щелкните на название сервера в окошке слева  
 
-<img src="../Tech/images/lab1/server-pgadmin.png">
+<img src="../../Tech/images/lab1/server-pgadmin.png">
 
 При удачном подсоединении появляются три новые вкладки
 
-<img src="../Tech/images/lab1/successful-connect.png">
+<img src="../../Tech/images/lab1/successful-connect.png">
 
 Первая вкладка – Database содержит всю информацию о хранимых базах данных. На текущий момент база данных всего одна – **postgres**
 
-<img src="../Tech/images/lab1/database-in-pgadmin.png">
+<img src="../../Tech/images/lab1/database-in-pgadmin.png">
 
 Вторая вкладка – Login/Group Roles. В ней содержаться все созданные роли и группы, в которые данные роли могут входить. Это предназначено для разделения прав пользователей базы данных, например, между администратором и программистом. По умолчанию создана одна роль – ***postgres***. 
 
-<img src="../Tech/images/lab1/db-groups.png" height='350'>
+<img src="../../Tech/images/lab1/db-groups.png" height='350'>
 
 Третья вкладка – Tablespaces. В ней располагаются табличные пространства, которые определяют физическое расположение данных. Например, табличные пространства возможно использовать, чтобы расположить архивные данные на медленных носителях, а данные, с которыми идет постоянная работа, на быстрых. При инициализации создается два табличных пространства - pg_default, для хранения данных по умолчанию и pg_global для хранения общих объектов. 
 
-<img src="../Tech/images/lab1/db-tablespaces.png">
+<img src="../../Tech/images/lab1/db-tablespaces.png">
 
 ---
 
@@ -185,13 +185,13 @@ psql
 * операторы управления транзакциями (Transaction Control Language, TCL)
 
 Более подробно данные операторы будут рассмотрены в дальнейшем. 
-Для того, чтобы создать запрос на языке SQL в программе pgAdmin необходимо воспользоваться утилитой Query tool. Для этого перейдите во вкладку Databases – postgres и нажмите на символ <img src="../Tech/images/lab1/query-tool.png" height='20'>.  
+Для того, чтобы создать запрос на языке SQL в программе pgAdmin необходимо воспользоваться утилитой Query tool. Для этого перейдите во вкладку Databases – postgres и нажмите на символ <img src="../../Tech/images/lab1/query-tool.png" height='20'>.  
 
-<img src="../Tech/images/lab1/make-request.png" height='200'>
+<img src="../../Tech/images/lab1/make-request.png" height='200'>
 
 Перед вами откроется командное окно, в которое возможно вводить запросы и запускать их на выполнение. 
 
-<img src="../Tech/images/lab1/commandline.png" height='200'>
+<img src="../../Tech/images/lab1/commandline.png" height='200'>
 
 Обратим внимание на строку с подключением. Она записана в формате «база данных/роль@сервер». Для данного примера база данных называется **postgres**, пользователь – **postgres**, сервер – PostgreSQL 15
 
@@ -232,9 +232,9 @@ CREATE ROLE имя [ [ WITH ] параметр [ ... ] ]
 
 Подробно о каждом из параметров возможно прочитать в приложении к документации PostgreSQL.
 
-Создадим роль, название которой будет содержать ваши инициалы и наделим её правами администратора. Для этого скопируем следующий скрипт в рабочую область и запустим его с помощью символа <img src="../Tech/images/lab1/run-script-symbol.png" height='15'> . Имя пользователя и пароль должны быть выбраны вами. 
+Создадим роль, название которой будет содержать ваши инициалы и наделим её правами администратора. Для этого скопируем следующий скрипт в рабочую область и запустим его с помощью символа <img src="../../Tech/images/lab1/run-script-symbol.png" height='15'> . Имя пользователя и пароль должны быть выбраны вами. 
 
-<img src="../Tech/images/lab1/run-script.png" height='200'>
+<img src="../../Tech/images/lab1/run-script.png" height='200'>
 
 ```sql
 CREATE ROLE "SAB" WITH
@@ -251,7 +251,7 @@ CREATE ROLE "SAB" WITH
 
 Обратите внимание, что после успешного выполнения запроса в поле Messages появилась информация об этом. 
 
-<img src="../Tech/images/lab1/successful-msg.png">
+<img src="../../Tech/images/lab1/successful-msg.png">
 
 ---
 
@@ -282,29 +282,29 @@ CREATE DATABASE students;
 
 Обновим информацию о базах данных на сервере. Для этого щелкнем по строке Databases в левой колонке правой кнопкой мыши и выберем пункт *Refresh*. 
 
-<img src="../Tech/images/lab1/refresh-button.png" height='100'>
+<img src="../../Tech/images/lab1/refresh-button.png" height='100'>
 
 Раскроем выпадающий список и убедимся, что появилась новая база данных. 
 
-<img src="../Tech/images/lab1/dropdown-list.png" height='50'>
+<img src="../../Tech/images/lab1/dropdown-list.png" height='50'>
 
 Нажмем на созданную базу данных и создадим новый экземпляр Query tool. Обратите внимание, что теперь произведено подключение к базе данных **students**. 
 
-<img src="../Tech/images/lab1/create-new-object.png">
+<img src="../../Tech/images/lab1/create-new-object.png">
 
 Подключимся к базе данных от имени созданной нами выше роли. Для этого нажмем на строку с соединением и в выпавшем окне выберем строку **< New Connection >**
 
-<img src="../Tech/images/lab1/new-connection.png" height='80'>
+<img src="../../Tech/images/lab1/new-connection.png" height='80'>
 
 Создадим новое соединение 
 
-<img src="../Tech/images/lab1/new-connection2.png" >
+<img src="../../Tech/images/lab1/new-connection2.png" >
 
 После успешного подключения обратим внимание на то, что имя пользователя изменилось. 
 
-<img src="../Tech/images/lab1/new-name-after-connection.png" >
+<img src="../../Tech/images/lab1/new-name-after-connection.png" >
 
-Создадим таблицы в базе данных. Для этого откроем скрипт «*create_database.sql*», нажав на символ <img src="../Tech/images/lab1/create-table-symbol.png" height='20'> и запустим его. Если все выполнилось верно, то в поле сообщений появится строчка: «**CREATE TABLE Query returned successfully**»
+Создадим таблицы в базе данных. Для этого откроем скрипт «*create_database.sql*», нажав на символ <img src="../../Tech/images/lab1/create-table-symbol.png" height='20'> и запустим его. Если все выполнилось верно, то в поле сообщений появится строчка: «**CREATE TABLE Query returned successfully**»
 Аналогично откроем файл «insert_students.sql» и заполним базу данными. 
 
 <img src="../../Tech/images/lab1/fill-new-db.png">
@@ -317,7 +317,7 @@ CREATE DATABASE students;
 * View/Edit Data позволяет вывести на экран содержимое таблицы. 
 
 Дважды щелкнув по любой ячейке таблицы, возможно изменить её значение. 
-После внесенных изменений необходимо зафиксировать их, нажав на символ <img src="../Tech/images/lab1/lock-symbol.png" height='20'>  или клавишу F6. 
+После внесенных изменений необходимо зафиксировать их, нажав на символ <img src="../../Tech/images/lab1/lock-symbol.png" height='20'>  или клавишу F6. 
 
 ---
 
