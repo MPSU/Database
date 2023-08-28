@@ -87,7 +87,7 @@ psql -U your_username -d your_database_name -f path/to/your_script.sql
 
 Проблемы сюда:  
 
-![issues](../../../Tech/issue.png)  
+![issues](../../../Tech/images/issue.png)  
 
 Вопросы сюда:
-[<img src="../../../Tech/tg-icon.svg" height='50' align="center">](https://t.me/KeoFoxy)
+[<img src="../../../Tech/images/tg-icon.svg" height='50' align="center">](https://t.me/KeoFoxy)
