@@ -21,11 +21,11 @@
 
 В качестве демо-проекта выступает приложение для отслеживания прогресса изучения, где реализовывается авторизация пользователя. 
 
-![login](./login-preview.png)
+![login](../../../Tech/images/project-swift/login-preview.png)
 
-![education](./education-preview.png)
+![education](../../../Tech/images/project-swift/education-preview.png)
 
-![preview](account-preview.png)
+![preview](../../../Tech/images/project-swift/account-preview.png)
 
 Логин - ***email***
 Пароль - ***Номер студенческого***     
@@ -61,7 +61,7 @@ configuration.ssl = false
 
 Также обязательно включите возможность входящего и исходящего подключения к вашему приложению в настройках проекта. Иначе приложение не сможет подключиться к серверу.      
 
-![xcode-network](./network-xcode.png)  
+![xcode-network](../../../Tech/images/project-swift/network-xcode.png)  
 
 ### Model
 
