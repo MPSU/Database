@@ -191,7 +191,7 @@ groups_query.exec();
 
 После того, как виджет размещен на форму, нужно дать ему имя, поскольку виджет - это тоже объект, также как и любой другой обьект класса или переменнная. Сделать это можно вот здесь, выбрав виджет таблицы в списке виджетов формы справа или просто нажав на него в форме:
 
-<img src="../Tech/images/table_widget_name.png">
+![table_widget_name](https://github.com/MPSU/Database/blob/Tech/images/table_widget_name.png)
 
 > Здесь атрибут objectName хранит в себе имя таблицы (объекта).
 
@@ -302,7 +302,9 @@ bool operator< (const Subject& other) const {
 
 Для начала рассмотрим общую структуру программы:
 
-<img src="../Tech/images/software_map.png">
+
+![software_map](https://github.com/MPSU/Database/blob/Tech/images/software_map.png)
+
 
 Софт представляет из себя следующее: в основе интерфейса лежит класс MainWindow, который отображает в текущий момент времени что-то из списка: 
 
@@ -337,7 +339,7 @@ stackedWidget->setCurrentWidget(login_form_);
 
 Как и в оригинальном, первым делом нас встречает форма логина, где необходимо ввести логин и пароль от учетной записи.
 
-<img src="../Tech/images/loginform.jpg">
+![loginform](https://github.com/MPSU/Database/blob/Tech/images/loginform.jpg)
 
 Реализация формы логина описана в следующих классах:
 
@@ -374,7 +376,8 @@ enum AcessLevel {
 Интерфейс студента состоит, по сути, из единственной вкладки - **обучение**.
 Выглядит он следующим образом:
 
-<img src="../Tech/images/diary.jpg">
+
+![diary](https://github.com/MPSU/Database/blob/Tech/images/diary.jpg)
 
 Давайте чуть более подробно рассмотрим, откуда вообще берется этот список дисциплин и оценок.
 
@@ -403,7 +406,8 @@ void Student::openDiary()
 
 Ниже представлен раздел с выбором дисциплины:
 
-<img src="../Tech/images/teacher_subject_selection.jpg">
+![teacher_subject_selection](https://github.com/MPSU/Database/blob/Tech/images/teacher_subject_selection.jpg)
+
 
 Рассмотрим бэкенд данной процедуры. Он описан внутри файла `subjectselection.cpp` функцией `fillSubjectsTable()`:
 
@@ -468,7 +472,7 @@ void SubjectSelection::handleGroupListRequest(int row)
 
 Раздел с выбором группы выглядит следующим образом:
 
-<img src="../Tech/images/teacher_group_selection.jpg">
+![teacher_group_selection](https://github.com/MPSU/Database/blob/Tech/images/teacher_group_selection.jpg)
 
 Заполнение таблички с группами происходит внутри следующей функции:
 
@@ -484,7 +488,8 @@ void GroupSelection::fillGroups(QStringList groups)
 
 Так выглядит журнал с перспективы учителя (впрочем, у методиста он выглядит точно также):
 
-<img src="../Tech/images/journal.jpg">
+![journal](https://github.com/MPSU/Database/blob/Tech/images/journal.jpg)
+
 
 Реализация журнала представлена в классе `Journal`.
 
@@ -554,7 +559,7 @@ void Journal::updateDatabaseGrades()
 
 Интерфейс выбора дисциплины выглядит следующим образом:
 
-<img src="../Tech/images/methodist_subject_selection.jpg">
+![methodist_subject_selection](https://github.com/MPSU/Database/blob/Tech/images/methodist_subject_selection.jpg)
 
 Реализация такого интерфейса несколько сложнее реализации аналогичного интерфейса преподавателя по понятным причинам. Рассмотрим, как именно формируется табличка с предметами по заданным фильтрам. 
 
@@ -576,9 +581,9 @@ void fillGroups();
 
 #### Назначение преподавателя
 
-Еще одной особенностью методиста является возможность назначить преподавателя для какой либо дисциплины.
+Еще одной особенностью методиста является возможность назначить преподавателя для какой либо дисциплины:
 
-<img src="../Tech/images/subject_teacher_contribution.jpg">
+![subject_teacher_contribution](https://github.com/MPSU/Database/blob/Tech/images/subject_teacher_contribution.jpg)
 
 Реализация данного функционала описана внутри класса `TeachersModeration`.
 
