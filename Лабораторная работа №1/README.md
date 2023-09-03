@@ -369,7 +369,7 @@ DROP DATABASE students;
 
 Запустите программу «ORIOKS Simulator». Обратите внимание на сообщение, которое было выведено в лог файл. Объясните полученную ошибку.  
 
-Изучите метод `void SqlService::databaseConnect()`, расположенный в файле **Sources/sql_service/sqlservise.cpp** изменения в файл **Header/sql_service/configuratedatabase.h**, подключиться к созданной базе данных.   
+Изучите метод `void SqlService::databaseConnect()`, расположенный в файле **Sources/sql_service/sqlservise.cpp**. Внесите изменения в файл **Header/sql_service/configuratedatabase.h**, чтобы подключиться к созданной ранее базе данных.
 
 Войдите в учебную базу данных из-под разных пользователей – студент, преподаватель, методист. Сравните интерфейсы данных пользователей.   
 
