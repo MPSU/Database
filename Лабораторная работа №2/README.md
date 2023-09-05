@@ -46,7 +46,7 @@ SELECT surname, name, patronymic FROM student;
 ```sql 
 SELECT name FROM student;
 ```
-Выведет все имена студентов, с учетом повторений. Чтобы их исключить необходимо использовать ключевое слово `DISTINCT`.   
+Выведет все имена студентов, с учетом повторений. Для исключения повторов необходимо использовать ключевое слово `DISTINCT`.   
 
 ```sql
 SELECT DISTINCT name FROM student;
@@ -89,7 +89,7 @@ SELECT surname, name, patronymic FROM student WHERE birthday > '25/06/2002' AND 
 SELECT surname, name, patronymic FROM student WHERE birthday BETWEEN '25/06/2002' AND '25/06/2003';
 ```
 
-#### Проверка на уленство во множестве
+#### Проверка на содержание во множестве
 
 С помощью ключевого слова `IN` возможно отобрать только те кортежи, заданный атрибут которых находится в указанном списке.   
 
