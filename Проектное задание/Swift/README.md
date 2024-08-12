@@ -1,75 +1,99 @@
-# Проектное задание на Swift
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swift/swift-original.svg" height='80' align="right"/>
 
-Одним из вариантов реализации индивидуального проекта вы моежет выбрать десктопное приложение под MacOS или мобильное.  
+# Демо проектное задание на Swift
 
-В качестве примера будет рассматриваться MacOS приложение.  
+Демонстрационный проект по работе с **PostgreSQL**.    
 
-Для написания используется:   
+Проект представляет из себя простой backend сервис, который предоставляет несколько API, написан на Swift и Vapor.   
 
-* **Swift**  
-* **SwiftUI**
-* **PostgresClientKit**  
-* **XCode**
+***Stack:***  
+
+* **Swift 5.10**  
+* **Vapor**
+* **Fluent**  
+* **Docker**
 
 Также вам необходим PSQL сервер и база данных на нем. Как это сделать вы можете прочитать [здесь](CreateYourOwnDatabase.md).  
 
-Так как Swift не умеет нативно работать с PSQL, понадобится сторонняя библиотека. Вы можете использовать свою, но в демо-проекте используется [**PostgresClientKit**](https://github.com/codewinsdotcom/PostgresClientKit).      
+##### Docker
 
----
-
-## Пример проекта
-
-В качестве демо-проекта выступает приложение для отслеживания прогресса изучения, где реализовывается авторизация пользователя. 
-
-![login](../../../Tech/images/project-swift/login-preview.png)
-
-![education](../../../Tech/images/project-swift/education-preview.png)
-
-![preview](../../../Tech/images/project-swift/account-preview.png)
-
-Логин - ***email***
-Пароль - ***Номер студенческого***     
-
-В своем проекте вы можете расширить возможности приложения: брать из базы данных предметы, прогресс, преподавателей и так далее. Но для демо-версии сделана только авторизация пользователя и отображение его данных в профиле.        
-
-Интерфейс для приложения уже написан, можете взять его, но если хотите, то создайте свой. SwiftUI не требует много знаний для создания простых интерфейсов.   
-
----
-
-### Структура проекта
-
-В папке **Managers** есть файл [**PostgreSQLManager.swift**](./SQLApp/SQLApp/Managers/PostgreSQLManager.swift) - это главный класс, который вам придется написать. Этот класс отвечает за работу с PSQL.  
-
-Для подключения к PSQL необходимо выставить настройки:   
-
-```swift
-let hostName: String = "127.0.0.1"
-let port: Int = 5432
-let databaseName: String = "blackfox"
-let userName: String = "admin"
-let password: String = "123456"
+Либо запустить проект используя [**Docker**](https://www.docker.com/products/docker-desktop/)    
+     
+```sh
+docker-compose build
+docker-compose up -d
+docker-compose run migrate
 ```
 
-> Небольшая подсказка: выключите SSL / TSL защиту, так как из-за нее у вас будут проблемы с подключением. Как это обойти - я не знаю, можете покопаться в конфигах PSQL сервера, если интересно, но самое просто решение - отключить SSL при конфигурации подключения, тогда также не нужно будет использовать пароль.
+> [!IMPORTANT]  
+> Для локального запуска не забудьте заполнить `.env` файл! Достаточно удалить расширение **.example** из шаблона `.env.example`
+> 
 
-```swift
-var configuration = PostgresClientKit.ConnectionConfiguration()
-configuration.ssl = false
+##### Тесты
+
+Тесты запускаются локально, для этого необходима база данных со всеми миграциями. БД можно поднять в докере или локально.    
+
+```sh
+docker-compose up -d db
+
+swift test
 ```
 
-Более подробно вы сможете почитать в документации к пакету [**PostgresClientKit**](https://github.com/codewinsdotcom/PostgresClientKit). 
+#### Клонировать проект
 
-Также обязательно включите возможность входящего и исходящего подключения к вашему приложению в настройках проекта. Иначе приложение не сможет подключиться к серверу.      
+```bash
+cd ../..
+git submodule update --init
+```
 
-![xcode-network](../../../Tech/images/project-swift/network-xcode.png)  
+#### API
 
-### Model
+| Method   | URL                                      | Description                              |
+| -------- | ---------------------------------------- | ---------------------------------------- |
+| `GET`    | `/animes`                             | Receive all anime.                      |
+| `GET`   | `/animes/{id}`                             | Get anime by id.                       |
+| `POST`    | `/animes`                          | Create an anime.                       |
+| `PUT`  | `/animes/{id}`                          | Update existing anime by id.                 |
+| `DELETE`   | `/animes/{id}`                 | Delete anime by id.                 |
 
-В папке **Models** есть файл [**AccountModel.swift**](./SQLApp/SQLApp/Models/AccountModel.swift) где описана модель данных аккаунта. Это те данные, которые мы получаем от сервера и отправляем на клиент для отрисовки.  
+##### Characters
 
-### Authorization  
+| Method   | URL                                      | Description                              |
+| -------- | ---------------------------------------- | ---------------------------------------- |
+| `GET`    | `/characters`                             | Receive all characters.                      |
+| `GET`   | `/characters/{id}`                             | Get character by id.                       |
+| `POST`    | `/characters`                          | Create character.                       |
+| `PUT`  | `/characters/{id}`                          | Update existing character by id.                 |
+| `DELETE`   | `/characters/{id}`                 | Delete character by id.                 |
 
-В папке **./Core/Authorization/ViewModel** есть файл [**AuthorizationViewModel.swift**](./SQLApp/SQLApp/Core/Authorization/ViewModel/AuthorizationViewModel.swift), в нем описана функция, которая производит авторизацию пользователя с использованием класса **PostgreSQLManager**. Функция вызывается по нажатию на кнопку авторизации.    
+
+#### Структура данных
+
+
+##### Anime
+```swift
+id: Optional<UUID>
+titleEn: String
+titleJp: String
+description: Optional<String>
+releaseDate: Date
+rating: Double
+episodeCount: Int
+type: AnimeType
+characters: [UUID]
+genres: Optional<[String]>
+imageUrl: Optional<String>
+```
+
+##### Character
+
+```swift
+id: Optional<UUID>
+name: String
+description: Optional<String>
+animeId: [UUID]
+imageUrl: Optional<String>
+```
 
 ---
 
